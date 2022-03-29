@@ -8,7 +8,7 @@
             "name": ".NET Core Launch (web)",
             "type": "coreclr",
             "request": "launch",
-            "preLaunchTask": "build",
+            "preLaunchTask": "watch",
             // If you have changed target frameworks, make sure to update the program path.
             "program": "${workspaceFolder}/CarvedRock.Admin/bin/Debug/net6.0/CarvedRock.Admin.dll",
             "args": [],

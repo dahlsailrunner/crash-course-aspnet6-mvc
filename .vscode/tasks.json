@@ -35,6 +35,9 @@
                 "--project",
                 "${workspaceFolder}/CarvedRock.Admin/CarvedRock.Admin.csproj"
             ],
+            "options": {
+                "cwd": "${workspaceFolder}/CarvedRock.Admin/"
+            },
             "problemMatcher": "$msCompile"
         }
     ]
