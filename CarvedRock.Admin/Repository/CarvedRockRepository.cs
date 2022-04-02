@@ -49,6 +49,10 @@ namespace CarvedRock.Admin.Repository
 
         public async Task RemoveProductAsync(int productIdToRemove)
         {
+            if (productIdToRemove == 3)
+            {
+                throw new Exception("Simulated exception trying to remove product!");
+            }
             var product = await _context.Products.FirstOrDefaultAsync(p => p.Id == productIdToRemove);
             if (product != null)
             {

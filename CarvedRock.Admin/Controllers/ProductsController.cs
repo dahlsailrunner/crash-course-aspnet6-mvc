@@ -7,9 +7,12 @@ namespace CarvedRock.Admin.Controllers;
 public class ProductsController : Controller
 {
     private readonly IProductLogic _productLogic;
-    public ProductsController(IProductLogic productLogic)
+    private readonly ILogger<ProductsController> _logger;
+
+    public ProductsController(IProductLogic productLogic, ILogger<ProductsController> logger)
     {
         _productLogic = productLogic;
+        _logger = logger;
         //Products = GetSampleProducts();
     }
 
@@ -22,7 +25,13 @@ public class ProductsController : Controller
     public async Task<IActionResult> Details(int id)
     {
         var product = await _productLogic.GetProductById(id);
-        return product == null ? NotFound() : View(product);        
+        if (product == null)
+        {
+            _logger.LogInformation("No product found for {id}.", id);
+            return View("NotFound");
+
+        }       
+        return View(product);
     }
 
     public IActionResult Create()
@@ -48,11 +57,15 @@ public class ProductsController : Controller
     // GET: ProductsData/Edit/5
     public async Task<IActionResult> Edit(int? id)
     {
-        if (id == null) return NotFound();
+        if (id == null)
+        {
+            _logger.LogInformation("Null ID passed to Edit route.");
+            return View("NotFound");
+        }
 
         var productModel = await _productLogic.GetProductById(id.Value);
 
-        if (productModel == null) return NotFound();
+        if (productModel == null) return View("NotFound");
 
         return View(productModel);
     }
@@ -64,7 +77,7 @@ public class ProductsController : Controller
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Description,Price,IsActive")] ProductModel product)
     {
-        if (id != product.Id) return NotFound(); 
+        if (id != product.Id) return View("NotFound"); 
 
         if (ModelState.IsValid)
         {
@@ -78,11 +91,11 @@ public class ProductsController : Controller
     // GET: ProductsData/Delete/5
     public async Task<IActionResult> Delete(int? id)
     {
-        if (id == null) return NotFound();
+        if (id == null) return View("NotFound");
     
         var productModel = await _productLogic.GetProductById(id.Value);
 
-        if (productModel == null) return NotFound();
+        if (productModel == null) return View("NotFound");
 
         return View(productModel);
     }
