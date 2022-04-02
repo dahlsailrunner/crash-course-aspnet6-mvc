@@ -1,10 +1,15 @@
 using CarvedRock.Admin.Data;
+using CarvedRock.Admin.DomainLogic;
+using CarvedRock.Admin.Repository;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddDbContext<ProductContext>();
+builder.Services.AddScoped<ICarvedRockRepository, CarvedRockRepository>();
+builder.Services.AddScoped<IProductLogic, ProductLogic>();
+
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
