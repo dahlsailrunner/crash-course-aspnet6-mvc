@@ -8,6 +8,12 @@
   * [Visual Studio or Visual Studio for Mac](https://visualstudio.microsoft.com/) - Community Edition is fine
   * [JetBrains Rider](https://www.jetbrains.com/rider/)
 
+**N O T E:** when this project runs it will create two different Sqlite
+databases, stored in the `Environment.SpecialFolder.LocalApplicationData` folder.  (`C:\Users\USERNAME\AppData\Local` on Windows and `/Users/USERNAME/.local/share` on Mac):
+
+* `carvedrock-admin.db` (this is the main application database)
+* `carvedrock-admin-users.db` (this is ASP.NET Core Identity)
+
 ### VS Code Setup
 
 Any flavor of Visual Studio or Rider will include
@@ -34,4 +40,3 @@ and they are described in my [VS Code gist](https://gist.github.com/dahlsailrunn
 * **Identity**
   * [General Docs](https://docs.microsoft.com/en-us/aspnet/core/security/?view=aspnetcore-6.0)
   * [Scaffolding Identity](https://docs.microsoft.com/en-us/aspnet/core/security/authentication/scaffold-identity)
-  
