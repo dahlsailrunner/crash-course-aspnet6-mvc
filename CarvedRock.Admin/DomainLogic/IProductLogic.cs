@@ -9,5 +9,7 @@ namespace CarvedRock.Admin.DomainLogic
         Task AddNewProduct(ProductModel productToAdd);
         Task RemoveProduct(int id);
         Task UpdateProduct(ProductModel productToUpdate);
+        Task<ProductModel> InitializeProductModel();
+        Task GetAvailableCategories(ProductModel productModel);
     }
 }

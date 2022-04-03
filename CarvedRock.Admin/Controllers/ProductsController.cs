@@ -34,9 +34,10 @@ public class ProductsController : Controller
         return View(product);
     }
 
-    public IActionResult Create()
+    public async Task<IActionResult> Create()
     {
-        return View();
+        var model = await _productLogic.InitializeProductModel();
+        return View(model);
     }
 
     // POST: ProductsData/Create
@@ -44,7 +45,7 @@ public class ProductsController : Controller
     // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Create([Bind("Id,Name,Description,Price,IsActive")] ProductModel product)
+    public async Task<IActionResult> Create([Bind("Id,Name,Description,Price,IsActive,CategoryId")] ProductModel product)
     {
         if (ModelState.IsValid)
         {
@@ -64,6 +65,7 @@ public class ProductsController : Controller
         }
 
         var productModel = await _productLogic.GetProductById(id.Value);
+        await _productLogic.GetAvailableCategories(productModel);
 
         if (productModel == null) return View("NotFound");
 
@@ -75,7 +77,7 @@ public class ProductsController : Controller
     // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Description,Price,IsActive")] ProductModel product)
+    public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Description,Price,IsActive,CategoryId")] ProductModel product)
     {
         if (id != product.Id) return View("NotFound"); 
 

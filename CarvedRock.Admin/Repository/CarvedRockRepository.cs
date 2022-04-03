@@ -14,12 +14,16 @@ namespace CarvedRock.Admin.Repository
 
         public async Task<List<Product>> GetAllProductsAsync()
         {
-            return await _context.Products.ToListAsync();
+            return await _context.Products
+                .Include(p => p.Category)
+                .ToListAsync();
         }
 
-        public Task<Product?> GetProductByIdAsync(int productId)
+        public async Task<Product?> GetProductByIdAsync(int productId)
         { 
-            return _context.Products.FirstOrDefaultAsync(m => m.Id == productId);
+            return await _context.Products
+                .Include(p=> p.Category)
+                .FirstOrDefaultAsync(m => m.Id == productId);
         }
 
         public async Task<Product> AddProductAsync(Product product)
@@ -59,6 +63,16 @@ namespace CarvedRock.Admin.Repository
                 _context.Products.Remove(product);
                 await _context.SaveChangesAsync();
             }
+        }
+
+        public async Task<Category?> GetCategoryByIdAsync(int categoryId)
+        {
+            return await _context.Categories.FirstOrDefaultAsync(m => m.Id == categoryId);
+        }
+
+        public async Task<List<Category>> GetAllCategoriesAsync()
+        {
+            return await _context.Categories.ToListAsync();
         }
     }
 }

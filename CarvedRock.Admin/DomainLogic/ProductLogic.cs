@@ -1,5 +1,6 @@
 ﻿using CarvedRock.Admin.Models;
 using CarvedRock.Admin.Repository;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace CarvedRock.Admin.DomainLogic;
 
@@ -37,7 +38,12 @@ public class ProductLogic : IProductLogic
 
     public async Task AddNewProduct(ProductModel productToAdd)
     {
-        await _repo.AddProductAsync(productToAdd.ToProduct());
+        var productToSave = productToAdd.ToProduct();
+        if (productToSave.CategoryId.HasValue)
+        {
+            productToSave.Category = await _repo.GetCategoryByIdAsync(productToSave.CategoryId.Value);
+        }
+        await _repo.AddProductAsync(productToSave);
     }
 
     public async Task RemoveProduct(int id)
@@ -47,7 +53,31 @@ public class ProductLogic : IProductLogic
 
     public async Task UpdateProduct(ProductModel productToUpdate)
     {
-        await _repo.UpdateProductAsync(productToUpdate.ToProduct());
+        var productToSave = productToUpdate.ToProduct();
+        if (productToSave.CategoryId.HasValue)
+        {
+            productToSave.Category = await _repo.GetCategoryByIdAsync(productToSave.CategoryId.Value);
+        }
+        await _repo.UpdateProductAsync(productToSave);
+    }
+
+    public async Task<ProductModel> InitializeProductModel()
+    {
+        return new ProductModel { AvailableCategories = await GetAvailableCategoriesFromDb() };
+    }
+
+    public async Task GetAvailableCategories(ProductModel productModel)
+    {
+        productModel.AvailableCategories = await GetAvailableCategoriesFromDb();
+    }
+
+    private async Task<List<SelectListItem>> GetAvailableCategoriesFromDb()
+    {
+        var cats = await _repo.GetAllCategoriesAsync();
+        var returnList = new List<SelectListItem> { new("None", "") };
+        var availCatList = cats.Select(cat => new SelectListItem(cat.Name, cat.Id.ToString())).ToList();
+        returnList.AddRange(availCatList);
+        return returnList;
     }
 }
 

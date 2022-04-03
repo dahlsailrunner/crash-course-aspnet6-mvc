@@ -26,3 +26,5 @@ and they are described in my [VS Code gist](https://gist.github.com/dahlsailrunn
 * **Data / Entity Framework (EF) Core**
   * [Entity Framework Core](https://docs.microsoft.com/en-us/ef/core)
   * [Database Providers](https://docs.microsoft.com/en-us/ef/core/providers/?tabs=dotnet-core-cli)
+  * [Migrations](https://docs.microsoft.com/en-us/ef/core/managing-schemas/migrations)
+  * [Relationships](https://docs.microsoft.com/en-us/ef/core/modeling/relationships)
