@@ -2,9 +2,11 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using CarvedRock.Admin.Data;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CarvedRock.Admin.Controllers
 {
+    [Authorize]
     public class ProductsDataController : Controller
     {
         private readonly ProductContext _context;

@@ -31,3 +31,7 @@ and they are described in my [VS Code gist](https://gist.github.com/dahlsailrunn
   * [Relationships](https://docs.microsoft.com/en-us/ef/core/modeling/relationships)
 * **Fluent Validation**
   * [General Docs](https://docs.fluentvalidation.net/en/latest/)
+* **Identity**
+  * [General Docs](https://docs.microsoft.com/en-us/aspnet/core/security/?view=aspnetcore-6.0)
+  * [Scaffolding Identity](https://docs.microsoft.com/en-us/aspnet/core/security/authentication/scaffold-identity)
+  
