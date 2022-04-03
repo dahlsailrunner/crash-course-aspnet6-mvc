@@ -29,7 +29,6 @@ public class ProductsController : Controller
         {
             _logger.LogInformation("No product found for {id}.", id);
             return View("NotFound");
-
         }       
         return View(product);
     }
@@ -65,10 +64,13 @@ public class ProductsController : Controller
         }
 
         var productModel = await _productLogic.GetProductById(id.Value);
+        if (productModel == null)
+        {
+            _logger.LogInformation("No product found for {id}.", id.Value);
+            return View("NotFound");
+        }
+
         await _productLogic.GetAvailableCategories(productModel);
-
-        if (productModel == null) return View("NotFound");
-
         return View(productModel);
     }
 
