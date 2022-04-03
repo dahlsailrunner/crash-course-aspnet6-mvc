@@ -33,6 +33,7 @@ the products that it sells.
 * The primary technology is **ASP.NET Core 6 MVC**
 * **Entity Framework (EF) Core** is used with Sqlite for the database
 * Basic CRUD operations are supported on Products and Cateogories
+* Styled with Bootstrap and the [Litera Bootwatch theme](https://bootswatch.com/litera/)
 * Repository and Domain Logic classes are used with **dependency injection (DI)** to support testability
 * The Category of a product is a related entity with navigation property
 * **Validation** is present on both categories and products, and a sample of
