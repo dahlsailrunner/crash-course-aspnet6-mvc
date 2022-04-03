@@ -11,7 +11,6 @@ using Microsoft.AspNetCore.Identity;
 var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("CarvedRockAdminContextConnection");
 
-
 // Add services to the container.
 builder.Services.AddDbContext<ProductContext>();
 builder.Services.AddScoped<ICarvedRockRepository, CarvedRockRepository>();
