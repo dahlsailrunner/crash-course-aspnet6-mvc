@@ -7,6 +7,7 @@
   * [VS Code](https://code.visualstudio.com/) - include the [C# language extension](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)
   * [Visual Studio or Visual Studio for Mac](https://visualstudio.microsoft.com/) - Community Edition is fine
   * [JetBrains Rider](https://www.jetbrains.com/rider/)
+* Trust the dotnet dev https certificate: `dotnet dev-certs https -t`
 
 **N O T E:** when this project runs it will create two different Sqlite
 databases, stored in the `Environment.SpecialFolder.LocalApplicationData` folder.  (`C:\Users\USERNAME\AppData\Local` on Windows and `/Users/USERNAME/.local/share` on Mac):
