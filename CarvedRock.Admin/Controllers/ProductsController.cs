@@ -51,6 +51,7 @@ public class ProductsController : Controller
             await _productLogic.AddNewProduct(product);
             return RedirectToAction(nameof(Index));
         }
+        await _productLogic.GetAvailableCategories(product);
         return View(product);
     }
 
@@ -89,6 +90,8 @@ public class ProductsController : Controller
             
             return RedirectToAction(nameof(Index));
         }
+
+        await _productLogic.GetAvailableCategories(product);
         return View(product);
     }
 

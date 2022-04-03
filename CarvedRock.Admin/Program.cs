@@ -1,6 +1,9 @@
 using CarvedRock.Admin.Data;
 using CarvedRock.Admin.DomainLogic;
+using CarvedRock.Admin.Models;
 using CarvedRock.Admin.Repository;
+using FluentValidation;
+using FluentValidation.AspNetCore;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,7 +13,8 @@ builder.Services.AddDbContext<ProductContext>();
 builder.Services.AddScoped<ICarvedRockRepository, CarvedRockRepository>();
 builder.Services.AddScoped<IProductLogic, ProductLogic>();
 
-builder.Services.AddControllersWithViews();
+builder.Services.AddControllersWithViews().AddFluentValidation();
+builder.Services.AddTransient<IValidator<ProductModel>, ProductValidator>();
 
 var app = builder.Build();
 

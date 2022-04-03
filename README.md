@@ -23,8 +23,11 @@ and they are described in my [VS Code gist](https://gist.github.com/dahlsailrunn
 * **User Interface**
   * [Tag Helpers](https://docs.microsoft.com/en-us/aspnet/core/mvc/views/tag-helpers/built-in/?view=aspnetcore-6.0)
   * [Razor Syntax](https://docs.microsoft.com/en-us/aspnet/core/mvc/views/razor?view=aspnetcore-6.0)
+  * [Validation and Data Annotations](https://docs.microsoft.com/en-us/aspnet/core/mvc/models/validation)
 * **Data / Entity Framework (EF) Core**
   * [Entity Framework Core](https://docs.microsoft.com/en-us/ef/core)
   * [Database Providers](https://docs.microsoft.com/en-us/ef/core/providers/?tabs=dotnet-core-cli)
   * [Migrations](https://docs.microsoft.com/en-us/ef/core/managing-schemas/migrations)
   * [Relationships](https://docs.microsoft.com/en-us/ef/core/modeling/relationships)
+* **Fluent Validation**
+  * [General Docs](https://docs.fluentvalidation.net/en/latest/)
