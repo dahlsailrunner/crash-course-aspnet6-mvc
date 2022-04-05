@@ -45,6 +45,7 @@ the products that it sells.
 
 ## Doc References
 
+* [.NET CLI (`dotnet` command)](https://docs.microsoft.com/en-us/dotnet/core/tools)
 * [ASP.NET Core MVC](https://docs.microsoft.com/en-us/aspnet/core/mvc/overview?view=aspnetcore-6.0)
 * **User Interface**
   * [Tag Helpers](https://docs.microsoft.com/en-us/aspnet/core/mvc/views/tag-helpers/built-in/?view=aspnetcore-6.0)
