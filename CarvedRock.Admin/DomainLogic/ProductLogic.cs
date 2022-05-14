@@ -39,10 +39,6 @@ public class ProductLogic : IProductLogic
     public async Task AddNewProduct(ProductModel productToAdd)
     {
         var productToSave = productToAdd.ToProduct();
-        if (productToSave.CategoryId.HasValue)
-        {
-            productToSave.Category = await _repo.GetCategoryByIdAsync(productToSave.CategoryId.Value);
-        }
         await _repo.AddProductAsync(productToSave);
     }
 
@@ -54,10 +50,6 @@ public class ProductLogic : IProductLogic
     public async Task UpdateProduct(ProductModel productToUpdate)
     {
         var productToSave = productToUpdate.ToProduct();
-        if (productToSave.CategoryId.HasValue)
-        {
-            productToSave.Category = await _repo.GetCategoryByIdAsync(productToSave.CategoryId.Value);
-        }
         await _repo.UpdateProductAsync(productToSave);
     }
 

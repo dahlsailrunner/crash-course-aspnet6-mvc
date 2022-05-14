@@ -32,7 +32,7 @@ public class ProductsController : Controller
         {
             _logger.LogInformation("No product found for {id}.", id);
             return View("NotFound");
-        }       
+        }
         return View(product);
     }
 
@@ -47,7 +47,7 @@ public class ProductsController : Controller
     // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Create([Bind("Id,Name,Description,Price,IsActive,CategoryId")] ProductModel product)
+    public async Task<IActionResult> Create(ProductModel product)
     {
         if (ModelState.IsValid)
         {
@@ -83,14 +83,14 @@ public class ProductsController : Controller
     // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Description,Price,IsActive,CategoryId")] ProductModel product)
+    public async Task<IActionResult> Edit(int id, ProductModel product)
     {
-        if (id != product.Id) return View("NotFound"); 
+        if (id != product.Id) return View("NotFound");
 
         if (ModelState.IsValid)
         {
             await _productLogic.UpdateProduct(product);
-            
+
             return RedirectToAction(nameof(Index));
         }
 
@@ -102,7 +102,7 @@ public class ProductsController : Controller
     public async Task<IActionResult> Delete(int? id)
     {
         if (id == null) return View("NotFound");
-    
+
         var productModel = await _productLogic.GetProductById(id.Value);
 
         if (productModel == null) return View("NotFound");
@@ -116,7 +116,7 @@ public class ProductsController : Controller
     public async Task<IActionResult> DeleteConfirmed(int id)
     {
         await _productLogic.RemoveProduct(id);
-       
+
         return RedirectToAction(nameof(Index));
     }
 
