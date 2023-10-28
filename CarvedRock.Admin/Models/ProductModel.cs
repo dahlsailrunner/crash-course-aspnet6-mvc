@@ -11,10 +11,10 @@ public class ProductModel
 
     [DisplayName("Product Name")]
     [Required]
-    public string Name { get; set; }
+    public string Name { get; set; } = null!;
 
     [Required]
-    public string Description { get; set; }
+    public string Description { get; set; } = null!;
 
     [DataType(DataType.Currency)]
     [Range(0.00, 10000.00, ErrorMessage = "Value for {0} must be between {1:C} and {2:C}")]

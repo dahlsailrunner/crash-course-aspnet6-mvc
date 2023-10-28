@@ -41,7 +41,8 @@ builder.Services.Configure<IdentityOptions>(options =>
     options.User.RequireUniqueEmail = false;
 });
 
-builder.Services.AddControllersWithViews().AddFluentValidation();
+builder.Services.AddControllersWithViews();
+builder.Services.AddFluentValidationAutoValidation().AddFluentValidationClientsideAdapters();
 builder.Services.AddTransient<IValidator<ProductModel>, ProductValidator>();
 
 var app = builder.Build();
