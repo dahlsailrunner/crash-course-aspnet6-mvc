@@ -1,7 +1,7 @@
-# MVC Crash Course - ASP.NET Core 6
+# MVC Crash Course - ASP.NET Core
 
-> [!NOTE]  
-> There is an `aspnet8` branch in this repo that updates this project for use with ASP.NET 8.
+> [!TIP]  
+> This is a branch that contains updates for this project for use with ASP.NET 8.
 
 ## Prerequisites
 
