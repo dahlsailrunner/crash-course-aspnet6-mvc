@@ -1,5 +1,8 @@
 # MVC Crash Course - ASP.NET Core 6
 
+> [!NOTE]  
+> The [`aspnet8` branch](https://github.com/dahlsailrunner/crash-course-aspnet6-mvc/tree/aspnet8) contains updates for this project for use with ASP.NET 8.
+
 ## Prerequisites
 
 * Install the [.NET SDK](https://dotnet.microsoft.com/en-us/download)
